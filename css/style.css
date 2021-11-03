@@ -30,7 +30,7 @@
     z-index: 2;
     display: flex;
 }
-
+/* display app left side */
 .left_container_message{
     width: 35%;
     height: 100%;
@@ -63,11 +63,16 @@
     display: flex;
 
 }
-
+/* display app right side */
 .right_container_message{
     width: 65%;
     height: 100%;
     border: 1px solid;
     display: flex;
+    flex-direction: column;
 
+}
+.right_container_message div {
+    border: 1px solid;
+    height: calc(100% / 5);
 }
