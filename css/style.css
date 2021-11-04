@@ -252,6 +252,43 @@ p {
     flex-grow: 1;
     flex-shrink: 1;
     background-image: url(../img/mine.jpg);
+    flex-direction: column;
+    padding: 30px;
+}
+.right_chat_display_sent, .right_chat_display_recived {
+    border: 1px solid;
+    height: 60px;
+    margin-bottom: 10px;
+}
+.right_chat_display_sent{
+    justify-content: flex-end;
+}
+.right_chat_display_sent .sent_sms {
+    border: 1px solid;
+    width: 40%;
+    justify-content: end;
+    align-items: center;
+    padding: 15px;
+    position: relative;
+    background-color: #d4f9ba;
+    border-radius: 15px;
+
+}
+.right_chat_display_recived .recived_sms {
+    border: 1px solid;
+    width: 40%;
+    align-items: center;
+    padding: 15px;
+    position: relative;
+    background-color: white;
+    border-radius: 15px;
+}
+
+.sms_date {
+    position: absolute;
+    bottom: 2px;
+    right: 2px;
+    font-size: 10px;
 }
 .right_chat_input{
     flex-shrink: 0;
@@ -264,7 +301,7 @@ p {
 }
 .right_chat_input_text input {
     width: 100%;
-    border: none;
+    border: none   ;
 }
 
 .right_chat_input_smile, .right_chat_input_microphone{
