@@ -256,7 +256,7 @@ p {
     padding: 30px;
 }
 .right_chat_display_sent, .right_chat_display_recived {
-    border: 1px solid;
+   
     height: 60px;
     margin-bottom: 10px;
 }
@@ -264,7 +264,7 @@ p {
     justify-content: flex-end;
 }
 .right_chat_display_sent .sent_sms {
-    border: 1px solid;
+    
     width: 40%;
     justify-content: end;
     align-items: center;
@@ -275,7 +275,7 @@ p {
 
 }
 .right_chat_display_recived .recived_sms {
-    border: 1px solid;
+  
     width: 40%;
     align-items: center;
     padding: 15px;
@@ -314,4 +314,5 @@ p {
 
 .right_chat_input_smile i, .right_chat_input_microphone i {
     color: #6c7375;
+    font-size: 20px;
 }
