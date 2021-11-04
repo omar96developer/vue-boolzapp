@@ -83,6 +83,35 @@
     display: flex;
     background-color: #8edafc;
 }
+.left_notifications div {
+    height: 100%;
+
+}
+.left_notifications_img{
+    display: flex;
+    width: 20%;
+    justify-content: center;
+    align-items: center;
+    padding: 10px 0; 
+}
+.left_notifications_img_2 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: white;
+    width: 60%;
+    border-radius: 50%;
+    
+}
+.left_notifications_img_2 i {
+    color: #8edafc;
+}
+.left_notifications_text{
+    width: 80%;
+}
+.left_notifications_text a {
+    color: #5a8699;
+}
 .left_search {
     flex-shrink: 0;
     display: flex;
