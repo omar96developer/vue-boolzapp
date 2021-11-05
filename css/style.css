@@ -266,7 +266,7 @@ small {
 }
 
 .right_chat_display_msg{
-    height: 60px;
+    height: 80px;
     margin-bottom: 10px;
 }
 
@@ -275,13 +275,15 @@ small {
 }
 .right_chat_display_msg.sent .card{
     background-color: #d4f9ba;
+    height: 70px;
 }
 .right_chat_display_msg.received .card{
     background-color: white;
+    height: 70px;
 }
 
 .right_chat_display_msg .card{
-    width: 200px;
+    width: 300px;
     border-radius: 15px;
 }
 
