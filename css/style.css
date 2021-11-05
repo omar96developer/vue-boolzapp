@@ -258,46 +258,49 @@ small {
 .right_chat_display{
     overflow: auto;
     flex-grow: 1;
-    flex-shrink: 1;
     background-image: url(../img/mine.jpg);
+    object-fit: cover;
+    display: flex;
     flex-direction: column;
-    padding: 30px;
+    padding: 10px;
 }
-.right_chat_display_sent, .right_chat_display_recived {
-   
+
+.right_chat_display_msg{
     height: 60px;
     margin-bottom: 10px;
 }
-.right_chat_display_sent{
-    justify-content: flex-end;
+
+.right_chat_display_msg.sent{
+    align-self: flex-end;
 }
-.right_chat_display_sent .sent_sms {
-    
-    width: 40%;
-    justify-content: end;
-    align-items: center;
-    padding: 15px;
-    position: relative;
+.right_chat_display_msg.sent .card{
     background-color: #d4f9ba;
-    border-radius: 15px;
-
 }
-.right_chat_display_recived .recived_sms {
-  
-    width: 40%;
-    align-items: center;
-    padding: 15px;
-    position: relative;
+.right_chat_display_msg.received .card{
     background-color: white;
+}
+
+.right_chat_display_msg .card{
+    width: 200px;
     border-radius: 15px;
 }
 
-.sms_date {
-    position: absolute;
-    bottom: 2px;
-    right: 2px;
-    font-size: 10px;
+.text {
+    justify-content: center;
+    width: 100%;
+    padding: 10px;
+    position: relative;
+    border-radius: 15px;
+    flex-direction: column;
 }
+.sms_date {
+    font-size: 10px;
+    text-align: end;
+    margin: 10px 0; 
+} 
+
+  
+
 .right_chat_input{
     flex-shrink: 0;
     height: 60px;

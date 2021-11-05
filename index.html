@@ -76,12 +76,12 @@
             
                 <div class="right_user">
                     <div class="right_user_img">
-                        <img src="img/avatar_1.jpg" alt="">
+                        <img :src="`img/avatar${activeChat.avatar}.jpg`" alt="avatar">
                     </div>
 
                     <div class="right_user_name">
                         <h4>{{activeChat.name}}</h4>
-                        <p>Ultimo accesso oggi alle 10/01/2020 16:15:22</p>
+                        <p>Ultimo accesso oggi all</p>
                     </div>
                     
                     <div class="right_user_icons">
@@ -92,16 +92,13 @@
                 </div>
 
                 <div class="right_chat_display">
-                    <div class="right_chat_display_sent">
-                        <div class="sent_sms">
-                            <p style="color: black;">gdfgfd gfgfdgdfdgfdggfr</p>
-                            <p class="sms_date">10/01/2020 15.30,55</p>
-                        </div>
-                    </div>
-                    <div class="right_chat_display_recived">
-                        <div class="recived_sms">
-                            <p style="color: black;">gdfgfd gfgfdgdfdgfdggfr</p>
-                            <p class="sms_date">10/01/2020 15.30,55</p>
+                    <div v-for="msg in activeChat.messages" class="right_chat_display_msg"
+                        :class="msg.status">
+                        <div class="card">
+                            <div class="text">
+                                <p style="color: black;margin-top: 10px;">{{msg.text}}</p>
+                                <p class="sms_date">{{msg.date}}</p>
+                            </div>
                         </div>
                     </div>
                 </div>
