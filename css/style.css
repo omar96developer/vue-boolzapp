@@ -5,7 +5,15 @@
 }
 p {
     color: #5a8699;
-
+    text-overflow: ellipsis;
+}
+small {
+    color: #5a8699;
+    width: 180px;
+    overflow: hidden;
+    display: inline-block;
+    text-overflow: ellipsis;
+    white-space: nowrap;
 }
 .fas, .far {color:#c4c4c4;} 
 /* outer background */

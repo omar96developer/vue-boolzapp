@@ -91,6 +91,13 @@ var app = new Vue(
               ],
         },
         methods: {
+          getLastMessage(messages){
+            if(messages.length === 0){
+              return "";
+            }
+
+            return messages[messages.length - 1].text;
+          }
             
         }
     }
