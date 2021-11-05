@@ -109,7 +109,7 @@
                     </div>
 
                     <div class="right_chat_input_text">
-                        <input type="text">
+                        <input type="text" placeholder="Scrivi un nuovo messaggio" v-model="newMessage" @keyup.enter="onSubmitClick">
                     </div>
                     
                     <div class="right_chat_input_microphone">
