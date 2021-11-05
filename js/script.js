@@ -89,6 +89,7 @@ var app = new Vue(
                   ],
                 },
               ],
+              activeChat: {},
         },
         methods: {
           getLastMessage(messages){
@@ -97,6 +98,9 @@ var app = new Vue(
             }
 
             return messages[messages.length - 1].text;
+          },
+          onChatClick(chatDaAttivare){
+            this.activeChat = chatDaAttivare;
           }
             
         }

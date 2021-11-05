@@ -51,7 +51,7 @@
                 </div>
                 <div class="left_all_chats">
                     <div class="left_all_chats_2 ">
-                        <div class="left_all_chat" v-for="chat in chatList">
+                        <div class="left_all_chat" v-for="chat in chatList" @click="onChatClick(chat)">
                             
                             <div class="left_all_chat_img">
                                 <img :src="`img/avatar${chat.avatar}.jpg`" alt="avatar">
@@ -80,7 +80,7 @@
                     </div>
 
                     <div class="right_user_name">
-                        <h4>Nome Utente</h4>
+                        <h4>{{activeChat.name}}</h4>
                         <p>Ultimo accesso oggi alle 10/01/2020 16:15:22</p>
                     </div>
                     
