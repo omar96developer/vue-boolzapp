@@ -4,123 +4,121 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>BoolzApp</title>
-    <link rel="stylesheet" href="css/style.css">
+    <title>Vue Boolzapp</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <link rel="stylesheet" href="css/style.css">
     <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+    <script src="https://unpkg.com/dayjs@1.8.21/dayjs.min.js"></script>
 </head>
 <body>
-    <header></header>
-    <main id="root" class="background_color">
-        <div class="green_bar"></div>
-        <div class="container_message">
-            <div class="left_container_message">
+    <div id="app">
+        <main>
+            <div class="main_background">
+                <div class="green_sec"></div>
+            </div>
+            <div class="app_container">
+                <!-- sezione di sinistra -->
+                <div class="section_left">
+                    <header class="left_header">
+                        <div class="avatar">
+                            <img src="img/avatar_io.jpg" alt="avatar_user">
+                        </div>
+                        <div class="avatar_info">
+                            <h2>Marika</h2>
+                        </div>
+                        <div class="icons">
+                            <i class="fas fa-circle-notch"></i>
+                            <i class="fas fa-comment-alt"></i>
+                            <i class="fas fa-ellipsis-v"></i>
+                        </div>
+                    </header>
 
-                <div class="left_user">
-                    <div class="left_user_img">
-                        <img src="img/avatar_io.jpg" alt="">
-                    </div>
-
-                    <div class="left_user_name">
-                        <h4>Nome Utente</h4>
-                    </div>
-                    
-                    <div class="left_user_icons">
-                        <div><i class="fas fa-circle-notch"></i></div>
-                        <div><i class="fas fa-comment-alt"></i></div>
-                        <div><i class="fas fa-ellipsis-v"></i></div>
-                    </div>
-                </div>
-
-                <div class="left_notifications">
-                    <div class="left_notifications_img">
-                        <i class="fas fa-bell-slash"></i>
-                    </div>
-                    <div class="left_notifications_text">
-                        <h4>Ricevi notifiche di nuovi messaggi</h4>
-                        <a href="#"><p>Attiva notifiche desktop</p></a>
-                    </div>
-                </div>
-                <div class="left_search">
-                    <div class="left_search_img">
-                        <i class="fas fa-search"></i>
-                    </div>
-                    <div class="left_search_input">
-                        <input type="text" placeholder="Cerca o inizia una nuova chat">
-                    </div>
-                </div>
-                <div class="left_all_chats">
-                    <div class="left_all_chats_2 ">
-                        <div class="left_all_chat" v-for="chat in chatList" @click="onChatClick(chat)">
-                            
-                            <div class="left_all_chat_img">
-                                <img :src="`img/avatar${chat.avatar}.jpg`" alt="avatar">
-                            </div>
-
-                            <div class="left_all_chat_text">
-                                <div class="left_all_chat_text_name">
-                                    <h4>{{chat.name}}</h4>
-                                    <small>{{getLastMessage(chat.messages)}}</small>
-                                </div>
-                                <div class="left_all_chat_text_date">30/01/2020 16.15.22</div>
-                               
+                    <!-- notifiche -->
+                    <div class="notification notification_color">
+                        <div class="avatar">
+                            <div class="bell">
+                                <i class="fas fa-bell-slash"></i>
                             </div>
                         </div>
-                       
-                    </div>
-                   
-                </div>
-            </div>
-
-            <div class="right_container_message">
-            
-                <div  class="right_user">
-                    <div class="right_user_img">
-                        <img :src="`img/avatar${activeChat.avatar}.jpg`" alt="avatar">
+                        <div class="avatar_info">
+                            <h3>Ricevi notifiche di nuovi messagi</h3>
+                            <div class="grey">Attiva notifiche desktop</div>
+                        </div>
                     </div>
 
-                    <div class="right_user_name">
-                        <h4>{{activeChat.name}}</h4>
-                        <p>Ultimo accesso oggi all</p>
+                    <!-- ricerca-->
+                    <div class="notification search">
+                        <i class="fas fa-search grey"></i>
+                        <div class="avatar_info">
+                            <input style="width: 300px;" type="text" class="grey" placeholder="Cerca o inizia una nuova chat"
+                            v-model="searchedUser" @change="getFilteredUsers">
+                        </div>
                     </div>
-                    
-                    <div class="right_user_icons">
-                        <div><i class="fas fa-search"></i></div>
-                        <div><i class="fas fa-paperclip"></i></div>
-                        <div><i class="fas fa-ellipsis-v"></i></div>
-                    </div>
-                </div>
 
-                <div class="right_chat_display">
-                    <div v-for="msg in activeChat.messages" class="right_chat_display_msg"
-                        :class="msg.status">
-                        <div class="card">
-                            <div class="text">
-                                <p style="color: black;margin-top: 10px;">{{msg.text}}</p>
-                                <p class="sms_date">{{msg.date}}</p>
+                    <!-- archivio chat -->
+                    <div class="chat">
+                        <!-- creo le card con il v-for -->
+                        <div class="notification" v-for="chat,i in getFilteredUsers()" @click="setActiveChat(chat, i)"
+                        :class="i === activeChat.index ? 'active' : ''">
+                            <div class="avatar">
+                                <img :src="createAvatarPath(chat.img)" alt="avatar_{{ i }}">
+                            </div>
+                            <div class="avatar_info">
+                                <h3>{{ chat.name }}</h3>
+                                <div class="grey">{{ getLastMessage(i) }}</div>
+                                <div class="grey">{{ getLastMessageDate(i) }}</div>
                             </div>
                         </div>
                     </div>
                 </div>
 
-                <div class="right_chat_input">
-                    <div class="right_chat_input_smile">
-                        <i class="far fa-smile"></i>
+                <!-- sezione destra -->
+                <div class="section_right">
+                    <header class="right_header">
+                        <div class="avatar">
+                            <img :src="createAvatarPath(this.activeChat.img)" alt="avatar_user">
+                        </div>
+                        <div class="avatar_info">
+                            <h2>{{ activeChat.name }}</h2>
+                            <div class="grey">Ultimo accesso il {{ getLastMessageDateActiveUser() }}</div>
+                        </div>
+                        <div class="icons">
+                            <i class="fas fa-search"></i>
+                            <i class="fas fa-paperclip"></i>
+                            <i class="fas fa-ellipsis-v"></i>
+                        </div>
+                    </header>
+
+                    <!-- display della chat-->
+                    <div class="display_messages">
+                        <!-- mostro tutti i messaggi in activeChat con un v-for -->
+                        <div class="display_message"
+                        :class="message.status === 'sent' ? 'message_sent' : 'message_received'"
+                        v-for="message in activeChat.messages">
+                            <div class="sms"
+                            :class="message.status === 'sent' ? 'sms_sent' : 'sms_received'">
+                                {{ message.text }}
+                                <span class="grey">{{ message.date.toLocaleString() }}</span>
+                            </div>
+                        </div>
                     </div>
 
-                    <div class="right_chat_input_text">
-                        <input type="text" placeholder="Scrivi un nuovo messaggio" v-model="newMessage" @keyup.enter="onSubmitClick">
-                    </div>
-                    
-                    <div class="right_chat_input_microphone">
-                        <i class="fas fa-microphone"></i>
+                    <!-- scrivi/invia sms -->
+                    <div class="sent_sms">
+                        <div class="avatar">
+                            <i class="far fa-smile grey"></i>
+                        </div>
+                        <input type="text" class="input_sms grey" placeholder="Scrivi un messaggio"
+                        v-model="newMessage"
+                        @keyup.enter="sendMessage()">
+                        <div class="avatar">
+                            <i class="fas fa-microphone grey"></i>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
-        
-    </main>
-    <footer></footer>
+        </main>
+    </div>
     <script src="js/script.js"></script>
 </body>
 </html>
