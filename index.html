@@ -24,7 +24,7 @@
                             <img src="img/avatar_io.jpg" alt="avatar_user">
                         </div>
                         <div class="avatar_info">
-                            <h2>Marika</h2>
+                            <h2>Nome Utente</h2>
                         </div>
                         <div class="icons">
                             <i class="fas fa-circle-notch"></i>
@@ -58,15 +58,15 @@
                     <!-- archivio chat -->
                     <div class="chat">
 
-                        <div class="notification" v-for="chat,i in filterUsers()" @click="setActiveChat(chat, i)"
+                        <div class="notification" v-for="chat,i in filterUsers()" @click="chatActive(chat, i)"
                         :class="i === activeChat.index ? 'active' : ''">
                             <div class="avatar">
-                                <img :src="createAvatarPath(chat.img)" alt="avatar_{{ i }}">
+                                <img :src="avatar(chat.img)" alt="avatar_{{i}}">
                             </div>
                             <div class="avatar_info">
                                 <h3>{{ chat.name }}</h3>
-                                <div class="grey">{{ getLastMessage(i) }}</div>
-                                <div class="grey">{{ getLastMessageDate(i) }}</div>
+                                <div class="grey">{{getLastMessage(i)}}</div>
+                                <div class="grey">{{getLastMessageDate(i)}}</div>
                             </div>
                         </div>
                     </div>
@@ -76,11 +76,11 @@
                 <div class="section_right">
                     <header class="right_header">
                         <div class="avatar">
-                            <img :src="createAvatarPath(this.activeChat.img)" alt="avatar_user">
+                            <img :src="avatar(this.activeChat.img)" alt="avatar_user">
                         </div>
                         <div class="avatar_info">
                             <h2>{{ activeChat.name }}</h2>
-                            <div class="grey">Ultimo accesso il {{ getLastMessageDateActiveUser() }}</div>
+                            <div class="grey">Ultimo accesso il {{getLastAcces()}}</div>
                         </div>
                         <div class="icons">
                             <i class="fas fa-search"></i>

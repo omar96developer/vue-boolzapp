@@ -94,30 +94,41 @@ const vueApp = new Vue({
         ]
     },
     methods: {
-        createAvatarPath(avatar) {
+        filterUsers() {
+            if (!this.searchedUser) {
+                return this.chatList
+            }
+
+            return this.chatList.filter(user => {
+                return user.name.toLowerCase().includes(
+                    this.searchedUser.trim().toLowerCase()
+                )
+            })
+        },
+        avatar(avatar) {
             return `./img/avatar${avatar}.jpg`
         },
-        setActiveChat(activeChat, i) {
-            this.activeChat = activeChat
+        chatActive(chatactive, i) {
+            this.activeChat = chatactive
             this.activeChat.index = i
         },
-        getLastMessage(index) {
+        getLastMessage(i) {
             if (this.chatList.length === 0) {
                 return ''
             }
 
-            const lastMessageIndex = this.chatList[index].messages.length - 1
-            return this.chatList[index].messages[lastMessageIndex].text
+            const lastMessageIndex = this.chatList[i].messages.length - 1
+            return this.chatList[i].messages[lastMessageIndex].text
         },
-        getLastMessageDate(index) {
+        getLastMessageDate(i) {
             if (this.chatList.length === 0) {
                 return ''
             }
 
-            const lastMessageIndex = this.chatList[index].messages.length - 1
-            return this.chatList[index].messages[lastMessageIndex].date.toLocaleString()
+            const lastMessageIndex = this.chatList[i].messages.length - 1
+            return this.chatList[i].messages[lastMessageIndex].date.toLocaleString()
         },
-        getLastMessageDateActiveUser() {
+        getLastAcces() {
             if (this.activeChat.length === 0) {
                 return ''
             }
@@ -141,17 +152,7 @@ const vueApp = new Vue({
                 text
             })
         },
-        filterUsers() {
-            if (!this.searchedUser) {
-                return this.chatList
-            }
-
-            return this.chatList.filter(user => {
-                return user.name.toLowerCase().includes(
-                    this.searchedUser.trim().toLowerCase()
-                )
-            })
-        },
+        
     },
     beforeMount() {
         this.activeChat = this.chatList[0]
