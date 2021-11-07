@@ -51,14 +51,14 @@
                         <i class="fas fa-search grey"></i>
                         <div class="avatar_info">
                             <input style="width: 300px;" type="text" class="grey" placeholder="Cerca o inizia una nuova chat"
-                            v-model="searchedUser" @change="getFilteredUsers">
+                            v-model="searchedUser" @change="filterUsers">
                         </div>
                     </div>
 
                     <!-- archivio chat -->
                     <div class="chat">
-                        <!-- creo le card con il v-for -->
-                        <div class="notification" v-for="chat,i in getFilteredUsers()" @click="setActiveChat(chat, i)"
+
+                        <div class="notification" v-for="chat,i in filterUsers()" @click="setActiveChat(chat, i)"
                         :class="i === activeChat.index ? 'active' : ''">
                             <div class="avatar">
                                 <img :src="createAvatarPath(chat.img)" alt="avatar_{{ i }}">

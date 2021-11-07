@@ -55,13 +55,14 @@ header {
     justify-content: center;
     align-items: center;
     width: 70px;
+    cursor: pointer;
 }
 .avatar img {
     width: 50px;
     border-radius: 50%;
 }
 .avatar_info {
-    width: calc(100% - 70px - 100px);
+    width:100%;
 }
 .grey {
     color: rgb(125, 125, 125);
@@ -73,6 +74,10 @@ header {
     display: flex;
     justify-content: space-between;
     padding: 5px;
+    cursor: pointer;
+}
+.icons i {
+    margin: 0 8px;
 }
 .notification {
     background-color: white;
@@ -98,6 +103,7 @@ header {
 }
 .avatar_info {
     font-size: 13px;
+    cursor: pointer;
 }
 .notification_color .grey {
     text-decoration: underline;
@@ -109,6 +115,7 @@ header {
 }
 .search i {
     padding: 0 15px;
+    cursor: pointer;
 }
 .search .info {
     font-size: 13px;
@@ -140,13 +147,13 @@ header {
     margin-top: 4px;
 }
 .section_right {
-    position: relative;
+    display: flex;
+    overflow: auto;
+    flex-direction: column;
 }
 .sent_sms {
     width: 100%;
-    position: absolute;
-    bottom: 0;
-    left: 0;
+    
     height: 60px;
 }
 .sent_sms i {
@@ -163,6 +170,9 @@ header {
 }
 .display_messages {
     padding: 30px 80px;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
 }
 .display_message {
     display: flex;
